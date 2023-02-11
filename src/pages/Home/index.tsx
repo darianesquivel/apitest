@@ -9,16 +9,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const useSearchState = create((set: any) => ({
-  search: "",
-  setter: (value: any) => set((state: any) => ({ search: value, ...state })),
+const useStore = create((set) => ({
+  input: "",
+  setInput: (newValue: any) => set((state: any) => ({ input: newValue })),
+  //updateFirstName: (firstName) => set(() => ({ firstName: firstName })),
 }));
-
-console.log("useSearchState", useSearchState);
 
 function Home() {
   const classes = useStyles();
-  const { search, setter } = useSearchState();
+  const input = useStore((state: any) => state.input);
+  const setInput = useStore((state: any) => state.setInput);
+  console.log({ input });
 
   return (
     <>
@@ -27,12 +28,14 @@ function Home() {
           id="outlined-basic"
           label="Outlined"
           variant="outlined"
-          value={search}
-          onChange={() => setter(search)}
+          defaultValue={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
         />
         <Button>Search</Button>
       </form>
-      <h1>{search}</h1>
+      <h1>Input: {input}</h1>
     </>
   );
 }
