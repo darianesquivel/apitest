@@ -2,7 +2,7 @@ import React from "react";
 import { getInitialImages } from "../utils/imagesFunctions";
 import { useQuery } from "react-query";
 import MediaCard from "../../components/MediaCard";
-import { Image } from "../Home/types";
+import { Image } from "../types";
 
 export default function ShowImages() {
   // comment para darian:
