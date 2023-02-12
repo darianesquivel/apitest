@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { TmediaCard } from "../pages/Home/types";
 
 const useStyles = makeStyles({
   root: {
@@ -16,13 +17,6 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-type TmediaCard = {
-  image: string;
-  description: string;
-  color: string;
-  likes: number;
-  created_at: string;
-};
 
 function MediaCard({
   image,

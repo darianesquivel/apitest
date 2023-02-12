@@ -3,52 +3,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import { create } from "zustand";
 import MediaCard from "../../components/MediaCard";
 import { useQuery } from "react-query";
-import unsplash from "../../imageApi/unsplash";
-
-interface Image {
-  alt_description: string;
-  blur_hash: string;
-  color: string;
-  created_at: string;
-  current_user_collections: [];
-  description: string;
-  height: number;
-  likes: number;
-  id: string;
-  links: {
-    download: string;
-    download_location: string;
-    html: string;
-    self: string;
-  };
-  urls: {
-    raw: string;
-    full: string;
-    regular: string;
-    small: string;
-    thumb: string;
-    small_s3: string;
-  };
-  width: number;
-}
-
+import { Image } from "./types";
+import { getInitialImages } from "../utils";
 const useStyles = makeStyles(() => ({
   formContainer: {
     display: "flex",
     justifyContent: "center",
   },
 }));
-
+// zustand global state
 const useStore = create((set) => ({
   input: "",
   setInput: (newValue: any) => set((state: any) => ({ input: newValue })),
 }));
-const initialImages = async () =>
-  await unsplash.get("/photos/random?count=10").then((res) => res.data);
-const searchImages = async (key: string) =>
-  await unsplash
-    .get("/search/photos", { params: { query: key } })
-    .then((res) => res.data);
 
 function Home() {
   const classes = useStyles();
@@ -65,7 +32,10 @@ function Home() {
    * también se ejecuta cada vez que cambiamos de ventanas y volvemos a la ventana de nuestro sitio
    * Esto se puede configurar
    */
-  const { data: images, status } = useQuery(["initialImages"], initialImages);
+  const { data: images, status } = useQuery(
+    ["initialImages"],
+    getInitialImages
+  );
   console.log({ images });
   const renderImages =
     status === "success"
