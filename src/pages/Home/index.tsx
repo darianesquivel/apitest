@@ -57,6 +57,14 @@ function Home() {
   const handleSubmit = (e: { preventDefault: any; target: any }) => {
     e.preventDefault();
   };
+  // comment para darian:
+  /**
+   * use Query es un estado que reemplaza y facilita el useEffect que se usa para fetchear cosas
+   * Esto se configura para mantener refrescada la info
+   * Creo que por default tiene algunas config como intervalos para los refreshes
+   * también se ejecuta cada vez que cambiamos de ventanas y volvemos a la ventana de nuestro sitio
+   * Esto se puede configurar
+   */
   const { data: images, status } = useQuery(["initialImages"], initialImages);
   console.log({ images });
   const renderImages =
