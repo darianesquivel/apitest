@@ -13,7 +13,7 @@ function ShowRepositories() {
   console.log({ repos, status });
   const renderRepos = status === "success";
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={1}>
       {renderRepos &&
         repos.map((repository: Trepository) => {
           return <RepositoryCard repo={repository} />;

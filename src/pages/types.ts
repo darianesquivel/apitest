@@ -99,5 +99,6 @@ export interface Trepository {
   labels_url: string;
   releases_url: string;
   deployments_url: string;
+  languaje: string;
 
 }

@@ -12,7 +12,7 @@ async function getUserRepos(userName: string) {
 }
 
 async function getRandomRepos() {
-  return await githubApi.get('https://api.github.com/repositories?since=10').then(res => res.data)
+  return await githubApi.get('https://api.github.com/repositories?size=5').then(res => res.data.slice(0, 20))
 }
 
 export { getUserInfo, getUserRepos, getRandomRepos }
