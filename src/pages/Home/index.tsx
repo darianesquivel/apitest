@@ -1,10 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { create } from "zustand";
-import MediaCard from "../../components/MediaCard";
-import { useQuery } from "react-query";
-import { Image } from "./types";
-import { getInitialImages } from "../utils/imagesFunctions";
+
 import ShowRepositories from "../repository";
 const useStyles = makeStyles(() => ({
   formContainer: {
